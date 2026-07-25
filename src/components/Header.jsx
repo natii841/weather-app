@@ -1,24 +1,33 @@
-function Header() {
+import { motion } from "framer-motion";
+import SearchBar from "./SearchBar";
+import { CloudLightning } from "lucide-react";
+
+function Header({ onSearch }) {
   return (
-    <header className="bg-blue-700 text-white px-6 py-4 flex justify-between items-center shadow-md">
-      {/* Logo */}
-      <h1 className="text-2xl font-bold flex items-center gap-2">
-        ☁ WeatherApp
-      </h1>
+    <motion.header 
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="w-full py-8 px-4 md:px-10 flex flex-col md:flex-row justify-between items-center gap-6 relative z-50"
+    >
+      <motion.div 
+        className="flex items-center gap-4 cursor-pointer group"
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+      >
+        <div className="glass-pill p-3 rounded-2xl group-hover:bg-white/30 transition-all duration-300">
+          <CloudLightning className="drop-shadow-md" size={32} />
+        </div>
+        <h1 className="text-4xl font-black tracking-tighter">
+          <span className="drop-shadow-sm">Weather</span>
+          <span className="opacity-70">Cast</span>
+        </h1>
+      </motion.div>
 
-      {/* Search */}
-      <div className="flex items-center bg-white rounded-lg overflow-hidden">
-        <input
-          type="text"
-          placeholder="Search City"
-          className="px-4 py-2 text-gray-700 outline-none"
-        />
-
-        <button className="bg-blue-500 px-4 py-2 hover:bg-blue-700">
-          🔍
-        </button>
+      <div className="w-full md:w-[400px]">
+        <SearchBar onSearch={onSearch} />
       </div>
-    </header>
+    </motion.header>
   );
 }
 

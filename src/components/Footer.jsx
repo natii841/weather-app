@@ -1,8 +1,8 @@
 function Footer() {
   return (
-    <footer className="bg-gray-900 text-white text-center py-5 mt-6">
-      <p>
-        Weather App © 2026
+    <footer className="glass-panel text-blue-100/60 py-6 text-center mt-auto mb-4 mx-4 md:mx-8">
+      <p className="text-sm font-light tracking-widest uppercase">
+        &copy; {new Date().getFullYear()} WeatherCast. Premium Weather Experience.
       </p>
     </footer>
   );
